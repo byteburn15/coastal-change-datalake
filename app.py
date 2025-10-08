@@ -49,7 +49,7 @@ if img1_file and img2_file:
 
     # Apply red overlay safely
     highlight = np.where(mask[:, :, None] == 255, red, highlight)
-
+ 
     # --- Display Results ---
     st.subheader(f"Change Detected: {percent_change}%")
     col1, col2, col3 = st.columns(3)
