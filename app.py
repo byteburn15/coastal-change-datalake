@@ -32,9 +32,21 @@ if img1_file and img2_file:
     total = thresh.size
     percent_change = round((changed / total) * 100, 2)
 
+    # --- Highlight changes safely ---
+    mask = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
+    highlight = np.where(mask == 255, [255, 0, 0], img2)
+
+    st.subheader(f"Change Detected: {percent_change}%")
+
+    col1, col2, col3 = st.columns(3)
+    with col1: st.image(img1, caption="Earlier Image")
+    with col2: st.image(img2, caption="Recent Image")
+    with col3: st.image(highlight, caption="Detected Changes")
+
     # Highlight changes
     highlight = img2.copy()
-    highlight[thresh > 0] = [255, 0, 0]
+    mask = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
+    highlight = np.where(mask == 255, [255, 0, 0], highlight)
 
     st.subheader(f"Change Detected: {percent_change}%")
 
