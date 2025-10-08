@@ -47,8 +47,8 @@ if img1_file and img2_file:
     # --- Display ---
     st.subheader(f"Change Detected: {percent_change}%")
     col1, col2, col3 = st.columns(3)
-    with col1: st.image(img1, caption="Earlier Image", use_column_width=True)
-    with col2: st.image(img2, caption="Recent Image", use_column_width=True)
+    with col1: st.image(img1, caption="Earlier Image", use_container_width=True)
+    with col2: st.image(img2, caption="Recent Image", use_container_width=True)
     with col3: st.image(highlight, caption="Detected Changes (Red Areas)", use_container_width=True)
 
     # CSV download
